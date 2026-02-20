@@ -1,0 +1,30 @@
+name: "04 · Déclenchement manuel"
+ 
+on:
+  workflow_dispatch:
+    inputs:
+      environnement:
+        description: "Vers quel environnement déployer ?"
+        required: true
+        default: "staging"
+        type: choice
+        options:
+          - staging
+          - production
+ 
+      message:
+        description: "Message optionnel (note de déploiement)"
+        required: false
+        default: "Déploiement manuel"
+ 
+jobs:
+  lancer:
+    runs-on: ubuntu-latest
+    steps:
+      - name:  Afficher les paramètres saisis
+        run: |
+          echo " Workflow déclenché manuellement"
+          echo " Par          : ${{ github.actor }}"
+          echo " Environnement: ${{ inputs.environnement }}"
+          echo " Message      : ${{ inputs.message }}"
+ 
