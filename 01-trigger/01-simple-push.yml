@@ -1,0 +1,15 @@
+name: "01 - Simple Example"
+
+on: push
+
+jobs:
+  afficher-info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Afficher des infos"
+        run: |
+          echo "Push detected"
+          echo "Author : ${{github.actor}}"
+          echo "Ref Name : ${{github.ref_name}}"
+          echo "SHA : ${{github.sha}}"
+        
